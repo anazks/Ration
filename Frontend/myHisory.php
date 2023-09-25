@@ -30,12 +30,12 @@
 
 		<ul class="nav-links">
 
-		<li><a class="home" href="adminpage.php">Home</a></li>
-        <li><a href="search_user.php">Search</a></li>
+		<li><a class="home" href="userPage.php">Home</a></li>
+        <!-- <li><a href="search_user.php">Search</a></li>
         <li><a href="registration.php">Registration</a></li>
-        <li><a href="sell.php">Sell</a></li>
-        <li><a href="history.php">History</a></li>
-        <li><a href="add_stock.php">Add_Stock</a></li>
+        <li><a href="sell.php">Sell</a></li> -->
+        <li><a href="my_History.php">History</a></li>
+        <!-- <li><a href="add_stock.php">Add_Stock</a></li> -->
         <li><a href="index.php">Logout</a></li>
         
 
@@ -189,7 +189,7 @@ $mysqli->close();
 
 <body>
 	<div>
-		<form id="suser" action="search_user.php"
+		<form id="suser" action="searchUser.php"
 			method="post">
 			<h3 id="seh">Search Stock</h3>
 			<input type="number" name="search" placeholder="Enter the Id"><br>
@@ -198,74 +198,7 @@ $mysqli->close();
 	</div>
 	<div class="right">
 
-		<table>
-			<!-- <h1>Customer info</h1> -->
-			<caption>
-				<h1>Customer info</h1>
-			</caption>
-			<tr>
-
-				<th>id</th>
-				<th>customer_name</th>
-				<th>color</th>
-				<th>family count</th>
-				<th>contact</th>
-				<th>city</th>
-			</tr>
-			<?php
-            $user = 'root';
-            $password = '';
-			$search = $_POST['search'];
-            // Database name is geeksforgeeks
-            $database = 'ration';
-
-            // Server is localhost with
-            // port number 3306
-            $servername = 'localhost:3306';
-            $mysqli = new mysqli(
-            	$servername,
-            	$user,
-            	$password,
-            	$database
-            );
-
-            // Checking for connections
-            if ($mysqli->connect_error) {
-	            die('Connect Error (' .
-	            	$mysqli->connect_errno . ') ' .
-	            	$mysqli->connect_error);
-            }
-
-            // SQL query to select data from database
-            $sql = " SELECT * FROM customer_info";
-            $result = $mysqli->query($sql);
-
-            while ($rows = $result->fetch_assoc()) {
-            ?>
-			<tr>
-				<td>
-					<?php echo $rows['id']; ?>
-				</td>
-				<td>
-					<?php echo $rows['name']; ?>
-				</td>
-				<td>
-					<?php echo $rows['color']; ?>
-				</td>
-				<td>
-					<?php echo $rows['family_count']; ?>
-				</td>
-				<td>
-					<?php echo $rows['contact']; ?>
-				</td>
-				<td>
-					<?php echo $rows['city']; ?>
-				</td>
-			</tr>
-			<?php
-            }
-            ?>
-		</table>
+	
 
 
 
@@ -302,7 +235,7 @@ $mysqli->close();
 	            die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT * FROM `remain_stock` WHERE id = '$search'";
+            $sql = "SELECT * FROM `history` WHERE id = '$search'";
             // Execute the query
             
             $result = $conn->query($sql);

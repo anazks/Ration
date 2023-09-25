@@ -30,12 +30,12 @@
 
 		<ul class="nav-links">
 
-		<li><a class="home" href="adminpage.php">Home</a></li>
-        <li><a href="search_user.php">Search</a></li>
-        <li><a href="registration.php">Registration</a></li>
-        <li><a href="sell.php">Sell</a></li>
-        <li><a href="history.php">History</a></li>
-        <li><a href="add_stock.php">Add_Stock</a></li>
+		<li><a class="home" href="userPage.php">Home</a></li>
+        <!-- <li><a href="search_user.php">Search</a></li> -->
+        <!-- <li><a href="registration.php">Registration</a></li> -->
+        <!-- <li><a href="sell.php">Sell</a></li> -->
+        <li><a href="myHisory.php">History</a></li>
+        <!-- <li><a href="add_stock.php">Add_Stock</a></li> -->
         <li><a href="index.php">Logout</a></li>
         
 
@@ -180,7 +180,7 @@ $mysqli->close();
 			width: 15%;
 		}
 		#seh{
-			margin-left:15% ;
+			margin-left:8% ;
 			/* padding: 5%; */
 			/* background-color: #E4F5D4; */
 		}
@@ -191,8 +191,8 @@ $mysqli->close();
 	<div>
 		<form id="suser" action="search_user.php"
 			method="post">
-			<h3 id="seh">Search Stock</h3>
-			<input type="number" name="search" placeholder="Enter the Id"><br>
+			<h3 id="seh">Search History and your Remainings</h3>
+			<input type="number" name="search" placeholder="Enter your  Id"><br>
 			<input id="btn" type="submit" >
 		</form>
 	</div>
@@ -237,7 +237,7 @@ $mysqli->close();
             }
 
             // SQL query to select data from database
-            $sql = " SELECT * FROM customer_info";
+            $sql = " SELECT * FROM customer_info where id = $search ";
             $result = $mysqli->query($sql);
 
             while ($rows = $result->fetch_assoc()) {

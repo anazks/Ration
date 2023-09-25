@@ -19,16 +19,6 @@
 		/* text-align: left; */
 
 	}
-	.userLogin{
-		border:2px solid black;
-		color:black;
-		width:100px;
-		height:30px;
-		text-decoration:none;
-		background-color:white;
-		border:none;
-		padding:2px
-	}
 </style>
 
 <body>
@@ -37,12 +27,12 @@
 	</div>
 
 
-	<form action="validate.php" method="post">
+	<form action="userValidation.php" method="post">
 		<div class="login-box">
 			<div id="heading">Ration Shop Distribution System
 			</div>
 			<div>
-				<h1>Login</h1>
+				<h1>User Login</h1>
 
 				<div class="textbox">
 					<i class="fa fa-user"
@@ -56,14 +46,13 @@
 					<i class="fa fa-lock"
 						aria-hidden="true"></i>
 					<input type="password"
-						placeholder="Password"
+						placeholder="use registread mobile number "
 						name="password" value="">
 				</div>
 
 				<input class="button" type="submit"
 					name="login" value="Sign In">
 			</div>
-			<a href="userLogin.php" class="userLogin">login as user</a>
 		</div>
 
 	</form>
