@@ -215,33 +215,39 @@ $mysqli->close();
 			<?php
             $user = 'root';
             $password = '';
-			$search = $_POST['search'];
-            // Database name is geeksforgeeks
-            $database = 'ration';
-
-            // Server is localhost with
-            // port number 3306
-            $servername = 'localhost:3306';
-            $mysqli = new mysqli(
-            	$servername,
-            	$user,
-            	$password,
-            	$database
-            );
-
-            // Checking for connections
-            if ($mysqli->connect_error) {
-	            die('Connect Error (' .
+		
+			
+				// Rest of your code that uses $search
+	
+				// Handle the case when 'search' is not set
+				// For example, you can set a default value or display an error message
+				
+				// Database name is geeksforgeeks
+				$database = 'ration';
+				
+				// Server is localhost with
+				// port number 3306
+				$servername = 'localhost:3306';
+				$mysqli = new mysqli(
+					$servername,
+					$user,
+					$password,
+					$database
+				);
+				
+				// Checking for connections
+				if ($mysqli->connect_error) {
+					die('Connect Error (' .
 	            	$mysqli->connect_errno . ') ' .
 	            	$mysqli->connect_error);
-            }
-
-            // SQL query to select data from database
-            $sql = " SELECT * FROM customer_info";
-            $result = $mysqli->query($sql);
-
-            while ($rows = $result->fetch_assoc()) {
-            ?>
+				}
+				
+				// SQL query to select data from database
+				$sql = " SELECT * FROM customer_info";
+				$result = $mysqli->query($sql);
+				
+				while ($rows = $result->fetch_assoc()) {
+					?>
 			<tr>
 				<td>
 					<?php echo $rows['id']; ?>
@@ -263,13 +269,14 @@ $mysqli->close();
 				</td>
 			</tr>
 			<?php
-            }
+            
+		}
             ?>
 		</table>
-
-
-
-
+		
+		
+		
+		
 
 
 	</div>
@@ -289,28 +296,29 @@ $mysqli->close();
 				<th>sugar(in kg)</th>
 			</tr>
 			<?php
-            $search = $_POST['search'];
+			
+				// For example, you can set a default value or display an error message
+				$server = "localhost";
+				$username = "root";
+				$password = "";
+				
+				// Create a database connection
+				$conn = mysqli_connect($server, $username, $password, "ration");
+				
+				if ($conn->connect_error) {
+					die("Connection failed: " . $conn->connect_error);
+				}
+				$search = isset($_POST['search']) ? $_POST['search'] : null;
 
-            $server = "localhost";
-            $username = "root";
-            $password = "";
-
-            // Create a database connection
-            $conn = mysqli_connect($server, $username, $password, "ration");
-
-            if ($conn->connect_error) {
-	            die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT * FROM `remain_stock` WHERE id = '$search'";
-            // Execute the query
-            
-            $result = $conn->query($sql);
-
-
-            if ($result->num_rows > 0) {
-	            while ($rows = $result->fetch_assoc()) {
-            ?>
+				$sql = "SELECT * FROM `remain_stock` WHERE id = '$search'";
+				// Execute the query
+				
+				$result = $conn->query($sql);
+				
+				
+				if ($result->num_rows > 0) {
+					while ($rows = $result->fetch_assoc()) {
+						?>
 			<tr>
 				<td>
 					<?php echo $rows['id']; ?>
@@ -333,14 +341,14 @@ $mysqli->close();
 			</tr>
 			<?php
 	            }
-            }
+		}
             ?>
 		</table>
-
-
-
-
-
+		
+		
+		
+		
+		
 	</div>
 	<div id="information">
     It tracks the stock of essential commodities available in the ration shop, ensuring that there are enough supplies to meet demand.

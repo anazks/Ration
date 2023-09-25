@@ -60,7 +60,7 @@ if(isset($_POST['id']) ){
     $password = "";
 
     // Create a database connection
-    $con = mysqli_connect($server, $username, $password,"DBMS");
+    $con = mysqli_connect($server, $username, $password,"ration");
 
     // Check for connection success
     if(!$con){

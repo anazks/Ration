@@ -189,10 +189,10 @@ $mysqli->close();
 
 <body>
 	<div>
-		<form id="suser" action="search_user.php"
+		<form id="suser" action="searchUser.php"
 			method="post">
 			<h3 id="seh">Search History and your Remainings</h3>
-			<input type="number" name="search" placeholder="Enter your  Id"><br>
+			<input type="number" name="search" placeholder="Enter your  Id" required><br>
 			<input id="btn" type="submit" >
 		</form>
 	</div>
