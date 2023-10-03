@@ -27,7 +27,7 @@
 	</div>
 
 
-	<form action="userValidation.php" method="post">
+	<form action="userLogin.php" method="post">
 		<div class="login-box">
 			<div id="heading">Ration Shop Distribution System
 			</div>
@@ -57,7 +57,38 @@
 
 	</form>
 
+	<?php
+    session_start();
 
+        $servername = "localhost"; // Change this to your database server
+        $username = "root"; // Change this to your database username // Change this to your database password
+        $database = "ration"; // Change this to your database name
+        $password = "";
+        $conn = new mysqli($servername, $username, $password, $database);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT * FROM customer_info WHERE `name`  = '$username' AND contact = '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        // Successful login
+        $_SESSION["username"] = $username;
+        header("Location: userpage.php"); // Redirect to a dashboard page or another authorized page
+        exit();
+    } else {
+        // Invalid credentials
+        echo "Invalid username or password. <a href='login.html'>Try again</a>";
+    }
+}
+
+$conn->close();
+        ?>
 </body>
 
 </html>
